@@ -8,6 +8,9 @@ public class Main {
          String first_name = JOptionPane.showInputDialog("Hi, what's your name?");
         JOptionPane.showMessageDialog(null, "Hi " + first_name , "Greetings from Panos", JOptionPane.INFORMATION_MESSAGE);
         */
+        Registration myRegistration = new Registration();
+        myRegistration.createWindow();
+
         DatabaseConnection myConnection = new DatabaseConnection();
         myConnection.mySQLconnection();
     }
