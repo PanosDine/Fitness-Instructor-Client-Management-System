@@ -3,7 +3,7 @@ import java.awt.event.*;
 import java.awt.*;
 import java.sql.*;
 
-public class Registration implements ActionListener {
+public class Registration extends JFrame implements ActionListener {
 
     JFrame myFrame = new JFrame();
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9;
@@ -11,18 +11,16 @@ public class Registration implements ActionListener {
     JButton b1, b2;
     JPasswordField p1, p2;
 
-    public void createWindow() {
+    public void Registration() {
 
         /**FRAME LAYOUT*/
         myFrame.setTitle("Registration Form");
         //myFrame.setResizable(true);
-        //myFrame.setSize(700, 700);
         myFrame.setBounds(40,40,400,600);
         myFrame.getContentPane().setBackground(Color.white);
         myFrame.getContentPane().setLayout(null);
         myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         myFrame.setResizable(true);
-        //myFrame.pack();
 
 
         /**LABELS, TEXTFIELDS AND BUTTONS*/
@@ -46,8 +44,10 @@ public class Registration implements ActionListener {
         t6 = new JTextField();
         t7 = new JTextField();
         t8 = new JTextField();
-        b1 = new JButton("Submit");
+        b1 = new JButton("Register");
         b2 = new JButton("Clear");
+        b1.addActionListener(this);
+        b2.addActionListener(this);
 
 
         l1.setBounds(145, 30, 400, 30);
@@ -99,7 +99,58 @@ public class Registration implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource() == b1) {
+            int x = 0;
+            String s1 = t1.getText();
+            String s2 = t2.getText();
+            String s3 = t3.getText();
+            char[] s4 = p1.getPassword();
+            char[] s5 = p2.getPassword();
+            String s9 = new String(s4);
+            String s10 = new String(s5);
+            String s6 = t6.getText();
+            String s7 = t7.getText();
+            String s8 = t8.getText();
+            if (s9.equals(s10)) {
+                try {
+                    Class.forName("com.mysql.cj.jdbc.Driver");
+                    Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myapp", "root", "root");
+                    //(first_name,last_name,email,password,address,city,postcode)
+                    PreparedStatement ps = con.prepareStatement("insert into customers values(?,?,?,?,?,?,?,?) ");
+                    ps.setInt(1, 0);
+                    ps.setString(2, s1);
+                    ps.setString(3, s2);
+                    ps.setString(4, s3);
+                    ps.setString(5, s9);
+                    ps.setString(6, s6);
+                    ps.setString(7, s7);
+                    ps.setString(8, s8);
+                    //ResultSet rs =
+                    ps.executeUpdate();
+                    x++;
+                    if (x > 0) {
+                        JOptionPane.showMessageDialog(b1, "Thank you for registering!");
+                    }
+                }
+                catch (Exception ex) {
+                    System.out.println(ex);
+                }
+            }
+            else {
+                JOptionPane.showMessageDialog(b1, "Passwords don't match!");
+            }
 
+        }
+        else {
+            t1.setText("");
+            t2.setText("");
+            t3.setText("");
+            p1.setText("");
+            p2.setText("");
+            t6.setText("");
+            t7.setText("");
+            t8.setText("");
+        }
     }
 }
 
