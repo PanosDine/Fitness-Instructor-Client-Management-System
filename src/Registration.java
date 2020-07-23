@@ -15,7 +15,6 @@ public class Registration extends JFrame implements ActionListener {
 
         /**FRAME LAYOUT*/
         myFrame.setTitle("Registration Form");
-        //myFrame.setResizable(true);
         myFrame.setBounds(40,40,400,600);
         myFrame.getContentPane().setBackground(Color.white);
         myFrame.getContentPane().setLayout(null);
