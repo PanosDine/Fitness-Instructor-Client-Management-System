@@ -33,7 +33,7 @@ public class Login extends JFrame implements ActionListener {
         b2 = new JButton("Clear");
         b1.addActionListener(this);
 
-        l1.setBounds(145, 30, 400, 30);
+        l1.setBounds(165, 30, 400, 30);
         l2.setBounds(40, 70, 200, 30);
         l3.setBounds(40, 110, 200, 30);
 
@@ -56,6 +56,14 @@ public class Login extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        if (e.getSource()==b1) {
+            UserProfile myProfile = new UserProfile();
+            myProfile.UserProfile();
+        }
+        else {
+            t1.setText("");
+            p1.setText("");
+        }
 
     }
 }

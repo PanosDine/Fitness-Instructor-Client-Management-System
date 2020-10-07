@@ -114,7 +114,6 @@ public class Registration extends JFrame implements ActionListener {
                 try {
                     Class.forName("com.mysql.cj.jdbc.Driver");
                     Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/myapp", "root", "root");
-                    //(first_name,last_name,email,password,address,city,postcode)
                     PreparedStatement ps = con.prepareStatement("insert into customers values(?,?,?,?,?,?,?,?) ");
                     ps.setInt(1, 0);
                     ps.setString(2, s1);
@@ -124,7 +123,6 @@ public class Registration extends JFrame implements ActionListener {
                     ps.setString(6, s6);
                     ps.setString(7, s7);
                     ps.setString(8, s8);
-                    //ResultSet rs =
                     ps.executeUpdate();
                     x++;
                     if (x > 0) {
