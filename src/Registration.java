@@ -92,6 +92,7 @@ public class Registration extends JFrame implements ActionListener {
         myFrame.add(b1);
         myFrame.add(b2);
 
+        myFrame.setLocationRelativeTo(null);
         myFrame.setVisible(true);
 
 

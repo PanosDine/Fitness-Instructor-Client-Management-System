@@ -6,7 +6,7 @@ import java.awt.event.ActionListener;
 public class UserProfile extends JFrame implements ActionListener {
     JFrame frame = new JFrame("Profile");
     JLabel l1, l2, l3, l4, l5;
-    JTextField t1, t2, t3, t4, t5;
+    JTextField t1, t2, t3, t4;
     JButton b1, b2;
 
     public void UserProfile() {
@@ -60,6 +60,7 @@ public class UserProfile extends JFrame implements ActionListener {
         frame.add(b1);
         frame.add(b2);
 
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
 
